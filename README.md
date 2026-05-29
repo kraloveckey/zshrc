@@ -57,7 +57,7 @@
 # [experimental]
 # multi_terminal = true
 
-# ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -67,12 +67,12 @@ setopt HIST_IGNORE_DUPS   # Don't save duplicate lines
 setopt SHARE_HISTORY      # Share history between sessions
 setopt EXTENDED_HISTORY
 
-# ~~~~~~~~~~~~~~~ Terminal Interface ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~ Terminal Interface ~~~~~~~~~~~~~~~
 
 PROMPT=$'%F{blue}%B┌──%B(%B%F{green}%n@%m%b%F{blue}%B)-%B[%F{cyan}%d%F{blue}%B]%F{011}
 %F{blue}%B└─%B%F{green}#%b%F{reset} '
 
-# ~~~~~~~~~~~~~~~ Battery ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~ Battery ~~~~~~~~~~~~~~~
 
 autoload -U colors && colors
 BATTERY_CHARGING="⚡️️"
@@ -80,7 +80,7 @@ BATTERY_SHOW_WATTS=true
 setopt prompt_subst
 RPROMPT='$(battery_pct_prompt)'
 
-# ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~
 
 export LANG="en_US.UTF-8"
 export CLICOLOR=1
@@ -89,7 +89,28 @@ export VISUAL="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 export EDITOR=nano
 export TERM="tmux-256color"
 
-# ~~~~~~~~~~~~~~~ Aliases / Functions ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~ Colors ~~~~~~~~~~~~~~~
+
+NOCOLOR='\033[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHTGRAY='\033[0;37m'
+DARKGRAY='\033[1;30m'
+LIGHTRED='\033[1;31m'
+LIGHTGREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+LIGHTBLUE='\033[1;34m'
+LIGHTPURPLE='\033[1;35m'
+LIGHTCYAN='\033[1;36m'
+WHITE='\033[1;37m'
+
+alias whichpill='echo -e "You take the ${BLUE}blue pill${NOCOLOR} – the story ends, you wake up in bed and believe whatever you want to believe. You take the ${RED}red pill${NOCOLOR} – you stay in Wonderland, and I show you how deep the rabbit hole goes. Remember: all I’m offering is the ${YELLOW}truth${NOCOLOR}. Nothing more."';
+
+# ~~~~~~~~~~~~~~~ Aliases / Functions ~~~~~~~~~~~~~~~
 
 # ls: Colorized directory listing
 alias ls='ls --color=auto'
@@ -294,7 +315,7 @@ enable-touchid-sudo() {
   sudo sed -i '.bak' '2s/^/auth       sufficient     pam_tid.so\'$'\n/g' /etc/pam.d/sudo
 }
 
-# ~~~~~~~~~~~~~~~ Integrations ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~ Integrations ~~~~~~~~~~~~~~~
 
 [[ -f "$HOME/.zsh/dotfile.zsh" ]] && builtin source "$HOME/.zsh/dotfile.zsh"
 ```
